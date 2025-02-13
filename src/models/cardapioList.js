@@ -1,10 +1,10 @@
-class cardapioList {
+class CardapioList {
     constructor() {
-        this.cardapio = [];
+        this.cardapios = [];
     }
 
     addCardapio(cardapio) {
-        this.cardapio.push(cardapio);
+        this.cardapios.push(cardapio);
     }
 
     getAllCardapio() {
@@ -12,7 +12,7 @@ class cardapioList {
     }
 
     getSongById(id) {
-        const cardapio = this.cardapio.find((cardapio) => cardapio.id == id);
+        const cardapio = this.cardapio.find(cardapio => cardapio.id == id);
         if (!cardapio) {
             throw new Error("Cardápio não encontrado");
         }
@@ -20,19 +20,19 @@ class cardapioList {
     }
 
     updateCardapio(id, updateData) {
-        const cardapio = this.getSongById(id);
-        Object.assign(this.getSongById, updateData);
+        const cardapio = getCardapioById(id);
+        Object.assign(cardapio, updateData);
         return cardapio;
     }
 
     deleteCardapio(id) {
-        this.cardapio = this.cardapio.filter((cardapio) => cardapio.id != id);
+        this.cardapios = this.cardapios.filter(cardapio => cardapio.id != id);
 
     }
 
     getTotalCardapio() {
-        return this.cardapio.length;
+        return this.cardapios.length;
     }
 }
 
-module.exports = cardapioList;
+module.exports = CardapioList;
