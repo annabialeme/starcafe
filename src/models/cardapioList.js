@@ -11,7 +11,7 @@ class CardapioList {
         return this.cardapios;
     }
 
-    getSongById(id) {
+    getCardapioById(id) {
         const cardapio = this.cardapios.find(cardapio => cardapio.id == id);
         if (!cardapio) {
             throw new Error("Cardápio não encontrado");
