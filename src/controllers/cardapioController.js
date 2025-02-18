@@ -1,17 +1,15 @@
-const Cardapio = require ("../models/cardapio");
-const CardapioList = require ("../models/cardapioList");
+const Cardapio = require ("../models/Cardapio");
+const CardapioList = require ("../models/CardapioList");
 
 const lista = new CardapioList();
 
-const cardapio = new Cardapio();
-
 const cardapio1 = new Cardapio("café expresso", "5.90", "expresso")
-lista.addCardapio(cardapio1);
+lista.addCardapio(cardapio1)
 
 lista.addCardapio(new Cardapio("Bolo de chocolate", "15.00", "doce"))
 
 const cardapioController = {
-    addCardapio: (req, res) => {
+   /* addCardapio: (req, res) => {
         try {
             const {nome, preco, categoria} = req.body;
             if (!nome || !preco || !categoria) {
@@ -29,16 +27,18 @@ const cardapioController = {
             });
         }
     },
+    */
 
     getAllCardapio: (req, res) => {
         try {
             const cardapios = lista.getAllCardapio();
             res.status(200).json(cardapios);
         } catch (error) {
-            res.status(404).json({message: 'Error ao buscar cardápio'});
+            res.status(404).json({ message: 'Error ao buscar cardápio', error: error.message });
         }
     },
 
+    /*
     getCardapioById: (req, res) => {
         try {
             const id = req.params.id;
@@ -77,6 +77,8 @@ const cardapioController = {
             });
         }
     },
+
+    */
 };
 
 module.exports = cardapioController;

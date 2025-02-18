@@ -11,6 +11,8 @@ class CardapioList {
         return this.cardapios;
     }
 
+    /*
+
     getCardapioById(id) {
         const cardapio = this.cardapios.find(cardapio => cardapio.id == id);
         if (!cardapio) {
@@ -33,6 +35,8 @@ class CardapioList {
     getTotalCardapio() {
         return this.cardapios.length;
     }
+
+    */
 }
 
 module.exports = CardapioList;
