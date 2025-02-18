@@ -1,3 +1,5 @@
+const { v4: uuid4 } = require("uuid");
+
 class Cardapio {
     constructor(id, nome, preco, categoria) {
         this.id = id;

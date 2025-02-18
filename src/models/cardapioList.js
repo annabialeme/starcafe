@@ -8,11 +8,11 @@ class CardapioList {
     }
 
     getAllCardapio() {
-        return this.cardapio;
+        return this.cardapios;
     }
 
     getSongById(id) {
-        const cardapio = this.cardapio.find(cardapio => cardapio.id == id);
+        const cardapio = this.cardapios.find(cardapio => cardapio.id == id);
         if (!cardapio) {
             throw new Error("Cardápio não encontrado");
         }
@@ -20,7 +20,7 @@ class CardapioList {
     }
 
     updateCardapio(id, updateData) {
-        const cardapio = getCardapioById(id);
+        const cardapio = this.getCardapioById(id);
         Object.assign(cardapio, updateData);
         return cardapio;
     }

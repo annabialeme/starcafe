@@ -1,7 +1,7 @@
 {
   "name": "starcafe",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -12,8 +12,8 @@
     "url": "git+https://github.com/annabialeme/starcafe.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Anna Leme",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/annabialeme/starcafe/issues"
   },

@@ -10,15 +10,18 @@ lista.addCardapio(cardapio1);
 
 lista.addCardapio(new Cardapio("Bolo de chocolate", "15.00", "doce"))
 
-const router = {
+const cardapioController = {
     addCardapio: (req, res) => {
         try {
             const {nome, preco, categoria} = req.body;
             if (!nome || !preco || !categoria) {
                 throw new Error ("Preencha todos os campos!");
             }
-            const cardapio = new Cardapio (nome, preco, categoria)
-            lista.status(200).json({message: "Criado com sucesso", cardapio});
+            const cardapio = new Cardapio (nome, preco, categoria);
+            lista.addCardapio(cardapio);
+
+
+            res.status(200).json({message: "Criado com sucesso", cardapio});
         } catch (error) {
             res.status(400).json({
                 message: "Erro ao criar cardápio",
@@ -42,8 +45,8 @@ const router = {
             res.status(200).json(lista.getSongById(id));
         } catch (error) {
             res.status(404).json({
-                message: 'Erro ao buscar cardapio por id',
-                error
+                message: "Erro ao buscar cardapio por id",
+                error: error.message,
             });
         }
     },
@@ -52,20 +55,28 @@ const router = {
         try {
             res.status(200).json(lista.updateCardapio(req.params.id, req.body));
         } catch (error) {
-            res.status(404).json ('Erro ao atualizar', error)
+            res.status(404).json({
+                message: "Erro ao atualizar",
+                error: error.message,
+            });
         }
     },
 
     deleteCardapio: (req, res) => {
         try {
-            lista.deleteCardapio(req.params.id);
+            const cardapioId = req.params.id;
+            lista.deleteCardapio(cardapioId);
             res.status(200).json({
-                message: 'Musica deletada com sucesso'
-            })
+                message: "Cardapio deletado com sucesso",
+                cardapioId,
+            });
         } catch (error) {
-            res.status(404).json('Erro ao deletar cardapio', error);
+            res.status(404).json({
+                message: "Erro ao deletar cardapio",
+                error: error.message,
+            });
         }
-    }
+    },
 };
 
-module.exports = router;
+module.exports = cardapioController;
